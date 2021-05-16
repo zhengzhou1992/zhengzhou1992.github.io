@@ -1,7 +1,9 @@
 ---
 title: "实现多 k8s 多 pod 实时日志查看"
 date: 2021-05-16T11:06:26+08:00
-draft: true
+draft: false
+tags: [kubernetes, log, UML]
+categories: [kubernetes]
 ---
 
 人们通常都使用 kubernetes 命令行工具 kubectl 的 logs 子命令获取 **一个** 集群(取决于 KUBECONFIG 环境变量以及 config file 中设置的 context) 中的实时 log 就像下面这样. 但是在多云部署的场景下, 在这些集群有些未部署集中式日志存储系统的时候, 我们要 debug 一个多云部署的应用(例如一些 controller), 经常需要打开多个 terminal 通过 kubectl 分别与这些 k8s apiserver 建立通信以获取相应的应用日志, 非常不方便. 想着能否实现一个工具来获取多 k8s 的应用实时日志, 本着不重复造轮子的想法, 先在网上搜了些工具, 发现它们基本都是针对单个集群的实现, 后来看到 stern, 看了下它的设计非常的精巧, 能够动态的根据设置的条件筛选 pods, 就打算对其进行改造以支持多 k8s.
