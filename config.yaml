@@ -1,10 +1,21 @@
 baseURL: 'https://zhengzhou1992.github.io/'
 languageCode: zh-cn
 title: Joe's blog
+dateFmt: "2006.01.27 15:04"
+defaultcontentlanguage: zh
+enableemoji: true
+enablegitinfo: true
 theme: smol
 keyword: "Docker, Kubernetes, Go, Golang, Python, DevOps, PaaS"
 about_me: true
 copyright: "Joe Zheng"
+permalinks:
+  posts: /:year/:month/:title/
+params:
+  AuthorName: Joe Zheng
+  GitHubUser: zhengzhou1992
+  subtitle: 小川的代码和生活
+  SidebarRecentLimit: 10
 menu:
   main:
     - identifier: posts
@@ -19,3 +30,7 @@ menu:
       name: Tags
       url: /tags/
       weight: 3
+    - identifier: aboutme
+      name: About
+      url: /about
+      weight: 4
